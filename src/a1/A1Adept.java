@@ -9,6 +9,7 @@ public class A1Adept {
 		
 		Scanner scan = new Scanner(System.in);
 		int count = Integer.parseInt(scan.next());
+		//initialize/populate dictionary for items and they corespoinding price
 		Dictionary item_price = new Hashtable();
 		for (int i=0; i<count; i++) {
 			String food = scan.next();
@@ -16,16 +17,20 @@ public class A1Adept {
 			item_price.put(food, price);
 		}
 		
+		//make arrays for both customer names and they corresponding spending
 		int people = Integer.parseInt(scan.next());
 		String[] names = new String[people];
 		float[] groceries_costs = new float[people];
 		
 		
 		for (int j=0; j<people; j++) {
+			//populate name array with correctly formated names
 			String first_name = scan.next();
 			String last_name = scan.next();
 			names[j] = first_name+" "+last_name;
 			int num_of_items = Integer.parseInt(scan.next());
+			
+			//populate cost array with total cost per customer
 			float total = 0;
 			for (int k = 0; k<num_of_items; k++) {
 				int amount = Integer.parseInt(scan.next());
@@ -37,6 +42,7 @@ public class A1Adept {
 		}
 		
 		scan.close();
+		//determine min/max/average values
 		float min = groceries_costs[0];
 		float max = groceries_costs[0];
 		int max_index = 0;
@@ -58,6 +64,7 @@ public class A1Adept {
 			
 			
 		}
+		//print output
 		System.out.println("Biggest:"+' '+max_person+ " ("+String.format("%.02f",max)+")");
 		System.out.println("Smallest:"+' '+min_person+ " ("+String.format("%.02f",min)+")");
 		System.out.println("Average: "+ String.format("%.02f", sum/groceries_costs.length));
