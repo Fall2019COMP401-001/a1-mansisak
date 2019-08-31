@@ -14,10 +14,12 @@ public class A1Jedi {
 		int count = Integer.parseInt(scan.next());
 		Dictionary item_amount = new Hashtable();
 		Dictionary item_pplWhoBought = new Hashtable();
+		String[] groceries = new String[count];
 		
 		for (int i=0; i<count; i++) {
 			String food = scan.next();
 			float price = Float.parseFloat(scan.next());
+			groceries[i]=food;
 			item_amount.put(food, 0);
 			item_pplWhoBought.put(food, 0);
 		}
@@ -52,9 +54,16 @@ public class A1Jedi {
 				
 			}
 		}
-		
-		System.out.println("amoutn of each item: "+item_amount);
-		System.out.println("amoutn of ppl who bought each item: "+item_pplWhoBought);
+		for(int i=0; i<count; i++) {
+			if((int)item_amount.get(groceries[i])==0) {
+				System.out.println("No customers bought "+groceries[i]);
+			}
+			else {
+				System.out.println(item_pplWhoBought.get(groceries[i])+" customers bought "+item_amount.get(groceries[i])+" "+groceries[i]);
+			}
+		}
+		//System.out.println("amount of each item: "+item_amount);
+		//System.out.println("amount of ppl who bought each item: "+item_pplWhoBought);
 		
 		
 	}
